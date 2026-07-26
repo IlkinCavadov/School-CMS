@@ -1,0 +1,54 @@
+# IDE
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Local database
+test.db
+
+# Build
+dist/
+
+# Cache
+.cache/
+.codspeed/
+
+# Environment variables
+.env
+.env.*
+
+# SQLite
+*.db
+*.sqlite3
+
+# Alembic (generated cache)
+*.pyc
+
+# Ruff cache (if you use Ruff later)
+.ruff_cache/
+
+# Pyright (if you use it later)
+.pyright/
