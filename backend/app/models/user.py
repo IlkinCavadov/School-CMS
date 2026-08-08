@@ -1,5 +1,6 @@
 from sqlalchemy import DateTime, ForeignKey, String, func
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy.orm import mapped_column, Mapped, relationship
+from app.models.role import Role
 from app.models.base import Base
 from datetime import datetime
 
@@ -8,6 +9,7 @@ class User(Base):
     __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(primary_key=True)
+    role: Mapped["Role"] = relationship()
     role_id: Mapped[int] = mapped_column(ForeignKey("role.id"), nullable=False)
     first_name: Mapped[str] = mapped_column(String(64), nullable=False)
     last_name: Mapped[str] = mapped_column(String(64), nullable=False)
