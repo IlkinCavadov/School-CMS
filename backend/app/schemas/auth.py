@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict,EmailStr
+from datetime import date
 
 
 
@@ -16,8 +17,19 @@ class UserCreate(BaseModel):
     email: EmailStr
     username: str
     password: str
+    employee_type: str
+    hire_date: date
 
 
+class UserUpdate(BaseModel):
+    first_name: str | None = None
+    last_name: str | None = None
+    email: EmailStr | None = None
+    username: str | None = None
+
+
+
+    
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: int
@@ -25,6 +37,7 @@ class UserResponse(BaseModel):
     last_name: str
     email: EmailStr
     username: str
+    employee_type: str
     
 class UserLogin(BaseModel):
     email: EmailStr

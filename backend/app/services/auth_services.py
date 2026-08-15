@@ -1,4 +1,6 @@
 from app.schemas.auth import UserCreate
+from app.models.employee import Employee
+from app.models.teacher import Teacher
 from app.auth.hashing import hash_password, verify_password
 from datetime import datetime, timedelta, timezone
 from app.settings.settings import settings
@@ -35,6 +37,16 @@ def register_user(db: Session, user_data: UserCreate):
         username=user_data.username,
         password_hash=hashed_password
     )
+    employee = Employee(
+        user = user,
+        employee_type=user_data.employee_type,
+        hire_date=user_data.hire_date,
+
+    )
+    if user_data.employee_type == "TEACHER":
+        teacher = Teacher(
+            employee=employee
+        )
     # Save User
     return create(db, user)
 

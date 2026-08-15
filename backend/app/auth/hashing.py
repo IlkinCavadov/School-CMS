@@ -8,6 +8,4 @@ def hash_password(password: str) -> str:
 
 
 def verify_password(password: str, hashed_password: str) -> bool:
-    print(repr(hashed_password))
-    print(type(hashed_password))
     return password_hasher.verify(password, hashed_password)

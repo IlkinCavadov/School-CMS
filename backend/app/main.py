@@ -1,13 +1,14 @@
 from fastapi import FastAPI
-from app.api.auth import router
+from app.api import auth, employees, students, school_classes, student_history
 
 app = FastAPI()
 
-app.include_router(router)
+app.include_router(auth.router)
+app.include_router(employees.router)
+app.include_router(students.router)
+app.include_router(school_classes.router)
+app.include_router(student_history.router)
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the School CMS API!"}
 
 
 

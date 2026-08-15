@@ -9,4 +9,5 @@ class SubjectAssignment(Base):
 
     subject_id: Mapped[int] = mapped_column(ForeignKey("subject.id"), primary_key=True)
     teacher_id: Mapped[int] = mapped_column(ForeignKey("teacher.user_id"), primary_key=True)
+    school_class_id: Mapped[int] = mapped_column(ForeignKey("school_class.id"), primary_key=True)
     

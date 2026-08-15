@@ -34,13 +34,18 @@ def register(user_data: UserCreate, db: Session = Depends(get_db), current_user:
 
 @router.post("/login", response_model=Token)
 def login(user_data: UserLogin, db: Session = Depends(get_db)):
+    
+
     try:
         user = login_user(db, user_data.email, user_data.password)
+        if  not user.is_active:
+            raise HTTPException(status_code= 404, detail=str("Users is deactivcated, Please contact person whe reponsible"))
 
         access_token = create_access_token(
             data={"sub": user.email},
             expires_minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
         )
+
 
         return Token(
             access_token=access_token,

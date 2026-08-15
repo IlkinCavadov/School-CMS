@@ -7,11 +7,13 @@ from app.models.user import User
 from app.models.role import Role
 from app.models.employee import Employee
 from app.models.room import Room
+from app.models.student import Student
+from app.models.student_history import StudentHistory
 from app.models.teacher import Teacher
 from app.models.subject import Subject
 from app.models.subject_assignment import SubjectAssignment
 from app.models.school_class import SchoolClass
-
+from app.models.class_group import ClassGroup
 from app.settings.settings import settings
 
 # this is the Alembic Config object, which provides
