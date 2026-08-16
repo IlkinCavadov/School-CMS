@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import auth, employees, students, school_classes, student_history
+from app.api import auth, employees, students, school_classes, student_history, room, subject, subject_assignment
 
 app = FastAPI()
 
@@ -8,6 +8,9 @@ app.include_router(employees.router)
 app.include_router(students.router)
 app.include_router(school_classes.router)
 app.include_router(student_history.router)
+app.include_router(room.router)
+app.include_router(subject.router)
+app.include_router(subject_assignment.router)
 
 
 
