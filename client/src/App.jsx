@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./auth/AuthContext";
 import DashboardLayout from "./layouts/DashboardLayout";
+import Login from "./pages/Login";
 
 function Dashboard() {
     return (
@@ -48,9 +50,10 @@ function Profile() {
 
 function App() {
     return (
+      <AuthProvider>
         <BrowserRouter>
             <Routes>
-
+              <Route path="/login" element={<Login />} />
                 <Route element={<DashboardLayout />}>
 
                     <Route
@@ -112,6 +115,7 @@ function App() {
 
             </Routes>
         </BrowserRouter>
+      </AuthProvider>  
     );
 }
 
