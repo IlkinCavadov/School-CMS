@@ -1,11 +1,19 @@
 [project]
 name = "school-cms"
 version = "0.1.0"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 
 dependencies = [
     "fastapi",
     "uvicorn",
     "sqlalchemy",
     "alembic",
+    "psycopg[binary]",
+    "pydantic[email]",
+    "pydantic-settings",
+    "pwdlib[argon2]",
+    "python-jose[cryptography]",
 ]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
