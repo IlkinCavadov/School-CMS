@@ -11,7 +11,8 @@ dependencies = [
     "psycopg[binary]",
     "pydantic[email]",
     "pydantic-settings",
-    "pwdlib[argon2]",
+    "pwdlib[argon2]"
+    "PyJWT[crypto]",
     "python-jose[cryptography]",
 ]
 

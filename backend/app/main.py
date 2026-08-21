@@ -1,7 +1,18 @@
 from fastapi import FastAPI
 from app.api import auth, employees, students, school_classes, student_history, room, subject, subject_assignment
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://super-journey-g4x49w79xvxgh99rp-5173.app.github.dev",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(auth.router)
 app.include_router(employees.router)
