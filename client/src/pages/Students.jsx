@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
 import { getStudents } from "../services/students";
 import { useAuth } from "../auth/AuthContext";
+import ReactPaginateModule from 'react-paginate';
 
 
+const ReactPaginate = ReactPaginateModule.default;
 
-
+console.log(ReactPaginate);
 
 function Students() {
 const { token } = useAuth();
+const [currentPage, setCurrentPage] = useState(0);
+const itemsPerPage = 5
+const offset = currentPage * itemsPerPage
 
 const [students, setStudents] = useState([]);
 const [loading, setLoading] = useState(true);
+const paginatedItems = students.slice(offset, offset + itemsPerPage)
 const [error, setError] = useState("");
+
+const handlePageChange = ({ selected }) => {
+  setCurrentPage(selected);
+};
+
+
 
 useEffect(() => {
     async function loadStudents() {
@@ -89,7 +101,7 @@ useEffect(() => {
 
     {!loading &&
         !error &&
-        students.map((student) => (
+        paginatedItems.map((student) => (
             <tr key={student.id}>
                 <td>
                     <strong>
@@ -118,13 +130,35 @@ useEffect(() => {
                 </td>
             </tr>
         ))}
+    
 </tbody>
         </table>
     </div>
+        <ReactPaginate
+        previousLabel="<"
+        nextLabel=">"
+        breakLabel={"..."}
+        breakClassName="paginationBreak"
+        pageCount={Math.ceil(students.length / itemsPerPage)}
+        marginPagesDisplayed={5}
+        pageRangeDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName="pagination"
+        activeClassName="pagination-active"
+        pageLinkClassName="pagination-link"
+        previousLinkClassName="pagination-previous"
+        nextLinkClassName="pagination-next"
+        disabledClassName="pagination-disabled"
+
+      />
+  
+    
 </section>
+
         </div>
         
     );
+    
 }
 
 export default Students;

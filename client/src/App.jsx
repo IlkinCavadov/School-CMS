@@ -4,13 +4,10 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Students from "./pages/Students";
+import Employees from "./pages/Employees";
 
 
 
-
-function Employees() {
-    return <h1>Employees</h1>;
-}
 
 function Teachers() {
     return <h1>Teachers</h1>;
