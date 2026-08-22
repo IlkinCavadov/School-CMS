@@ -22,7 +22,6 @@ function Login() {
             const data = await loginRequest(email, password);
 
             login(data.access_token);
-
             navigate("/dashboard");
         } catch (error) {
             setError("Invalid email or password.");
@@ -32,50 +31,67 @@ function Login() {
     }
 
     return (
-        <div className="login-page">
-            <div className="login-card">
+        <main className="login-page">
+            <section className="login-card">
+                <div className="login-brand">
+                    <div className="login-logo">G</div>
 
-                <h1>Greenfield School</h1>
-                <p>Management System</p>
+                    <h1>Greenfield School</h1>
+                    <p>Management System</p>
+                </div>
 
-                <form onSubmit={handleSubmit}>
+                <div className="login-heading">
+                    <h2>Welcome back</h2>
+                    <p>Sign in to continue to your account.</p>
+                </div>
 
-                    <label>
-                        Email
-                    </label>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <div className="form-field">
+                        <label htmlFor="email">Email</label>
 
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(event) => setEmail(event.target.value)}
-                        required
-                    />
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            autoComplete="email"
+                            required
+                        />
+                    </div>
 
-                    <label>
-                        Password
-                    </label>
+                    <div className="form-field">
+                        <label htmlFor="password">Password</label>
 
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                        required
-                    />
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            autoComplete="current-password"
+                            required
+                        />
+                    </div>
 
                     {error && (
-                        <div className="login-error">
+                        <div className="login-error" role="alert">
                             {error}
                         </div>
                     )}
 
-                    <button type="submit" disabled={loading}>
-                        {loading ? "Logging in..." : "Login"}
+                    <button
+                        className="login-button"
+                        type="submit"
+                        disabled={loading}
+                    >
+                        {loading ? "Signing in..." : "Sign in"}
                     </button>
-
                 </form>
 
-            </div>
-        </div>
+                <div className="login-footer">
+                    Greenfield School Management System
+                </div>
+            </section>
+        </main>
     );
 }
 

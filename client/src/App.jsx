@@ -1,20 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthContext";
 import DashboardLayout from "./layouts/DashboardLayout";
+import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Students from "./pages/Students";
 
-function Dashboard() {
-    return (
-        <div>
-            <h1>Dashboard</h1>
-            <p>Welcome to the School Management System.</p>
-        </div>
-    );
-}
 
-function Students() {
-    return <h1>Students</h1>;
-}
+
 
 function Employees() {
     return <h1>Employees</h1>;
