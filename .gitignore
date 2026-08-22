@@ -45,6 +45,8 @@ dist/
 # SQLite
 *.db
 *.sqlite3
+# Database dumps
+*.dump
 
 # Alembic (generated cache)
 *.pyc

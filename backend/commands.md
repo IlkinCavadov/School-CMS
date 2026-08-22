@@ -8,6 +8,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 # Alembic commands
 alembic revision --autogenerate -m ""
 alembic upgrade head
+alembic current
 
 # Seed the data
 python -m app.seeds.seed_data
